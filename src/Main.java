@@ -44,7 +44,7 @@ public class Main {
     }
 
     public static void showBasket(ArrayList<String> basket) {
-        System.out.println("Список покупок" + ((basket.size() == 0) ? " пуст" : ""));
+        System.out.println("Список покупок" + (basket.isEmpty() ? " пуст" : ""));
         for (int i = 0; i < basket.size(); i++) {
             System.out.println((i + 1) + ". " + basket.get(i));
         }
