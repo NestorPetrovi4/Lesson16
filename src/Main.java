@@ -79,11 +79,11 @@ public class Main {
         for (int i = 0; i < basket.size(); i++) {
             String item = basket.get(i);
             String itemLower = item.toLowerCase();
-            if (itemLower.contains(findString)){
+            if (itemLower.contains(findString)) {
                 stringBuilder.append((i + 1) + ". " + item + "\n");
             }
         }
-        if (stringBuilder.length() > 0){
+        if (stringBuilder.length() > 0) {
             System.out.println("Найдено:");
             System.out.println(stringBuilder.toString());
         }
