@@ -22,7 +22,7 @@ public class Main {
             } else if (numOperation == 2) {
                 showBasket(basket);
             } else if (numOperation == 3) {
-
+                deleteBasket(basket, scanner);
             } else {
                 System.out.println("Номер операции выбран неверно, введенного Вами номера " + numOperation + " нет в предложенном списке выбора");
                 continue;
@@ -42,9 +42,30 @@ public class Main {
     }
 
     public static void showBasket(ArrayList basket) {
-        System.out.println("Список покупок");
+        System.out.println("Список покупок" + ((basket.size() == 0) ? " пуст" : ""));
         for (int i = 0; i < basket.size(); i++) {
             System.out.println((i + 1) + ". " + basket.get(i));
+        }
+    }
+
+    public static void deleteBasket(ArrayList basket, Scanner scanner) {
+        showBasket(basket);
+        System.out.println("Введите номер позиции или название позиции которую хотите удалить");
+        String inputStr = scanner.nextLine();
+        try {
+            int num = Integer.parseInt(inputStr);
+            if (num == 0 || basket.size() < num) {
+                System.out.println("Такого номера позиции не существует в вашей корзине!!!!");
+                return;
+            }
+            System.out.println("Покупка " + basket.get(num -1) + " удалена");
+            basket.remove(num - 1);
+            showBasket(basket);
+        } catch (NumberFormatException error) {
+            if (basket.remove(inputStr)) {
+                System.out.println("Покупка " + inputStr + " удалена");
+                showBasket(basket);
+            }
         }
     }
 }
